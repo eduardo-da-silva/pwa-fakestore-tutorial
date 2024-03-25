@@ -12,11 +12,21 @@ import LogoTitle from '@/components/templates/LogoTitle.vue';
         <logo-title class="mb-2" />
         <div class="divider" />
         <div class="menu">
-            <HomeOutline size="30" /> Home
-            <CameraOutline size="30" /> Eletrônicos
-            <DiamondStone size="30" /> Joias
-            <HumanMale size="30" /> Masculino
-            <HumanFemale size="30" /> Feminino
+            <router-link to="/">
+                <HomeOutline size=30 /> Home
+            </router-link>
+            <router-link to="/categorias/eletronics">
+                <CameraOutline size=30 /> Eletrônicos
+            </router-link>
+            <router-link to="/categorias/jewelery">
+                <DiamondStone size=30 /> Joias
+            </router-link>
+            <router-link to="/categorias/men's clothing">
+                <HumanMale size=30 /> Masculino
+            </router-link>
+            <router-link to="/categorias/women's clothing">
+                <HumanFemale size=30 /> Feminino
+            </router-link>
         </div>
     </div>
     <logo-title />
@@ -32,11 +42,16 @@ import LogoTitle from '@/components/templates/LogoTitle.vue';
 }
 
 .menu {
+    padding: 3rem;
+}
+
+.menu a {
     display: grid;
     grid-template-columns: 1fr 5fr;
-
-    padding: 3rem;
+    text-decoration: none;
+    color: #000000;
     gap: 1rem;
     font-size: 1.3rem;
+    margin-top: 2.2rem;
 }
 </style>

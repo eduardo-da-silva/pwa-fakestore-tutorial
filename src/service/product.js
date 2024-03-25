@@ -5,4 +5,9 @@ export default class ProductService {
     const response = await axios.get('https://fakestoreapi.com/products')
     return response.data
   }
+
+  async getProductByCategory(category) {
+    const response = await axios.get(`https://fakestoreapi.com/products/category/${category}`)
+    return response.data
+  }
 }

@@ -1,21 +1,38 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, watch } from 'vue';
 import { useProductStore } from '@/stores/product';
 
 import HeartOutline from 'vue-material-design-icons/HeartOutline.vue';
 import Star from 'vue-material-design-icons/Star.vue';
 import { formatDescription, formatPrice, formatTitle } from '@/helpers/format';
 
+const props = defineProps(['category']);
 const productStore = useProductStore();
 
-onMounted(() => {
-    productStore.getProducts();
+async function getProducts() {
+    if (props.category) {
+        await productStore.getProductsByCategory(props.category);
+    } else {
+        await productStore.getProducts();
+    }
+}
+
+watch(() => props.category, () => {
+    getProducts();
+});
+
+
+onMounted(async () => {
+    await getProducts();
 });
 
 </script>
 
 <template>
     <div class="product-list">
+        <div v-if="productStore.products.length === 0">
+            <p>Produtos não encontrados</p>
+        </div>
         <div v-for="product in productStore.products" :key="product.id" class="product-card">
             <div class="product-img-wrapper">
                 <img :src="product.image" alt="product.name" />
