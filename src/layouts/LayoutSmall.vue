@@ -9,33 +9,6 @@ import SmallFooter from '@/components/templates/small/SmallFooter.vue';
         </header>
         <main>
             <router-view />
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste 2</p>
         </main>
         <footer>
             <small-footer />
@@ -52,7 +25,7 @@ import SmallFooter from '@/components/templates/small/SmallFooter.vue';
 
 header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 1.5rem;
     border-bottom: #EEEEEE 2px solid;
     background-color: white;

@@ -23,7 +23,7 @@ import MediumFooter from '@/components/templates/medium/MediumFooter.vue';
 <style scoped>
 #layout-medium {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 6fr;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "aside header"
