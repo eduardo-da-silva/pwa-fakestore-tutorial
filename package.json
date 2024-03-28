@@ -11,6 +11,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "axios": "^1.6.8",
     "pinia": "^2.1.7",
     "vite-plugin-pwa": "^0.19.4",

@@ -1,11 +1,20 @@
 <script setup>
+import { onMounted } from 'vue';
 import HomeOutline from 'vue-material-design-icons/HomeOutline.vue';
-import CameraOutline from 'vue-material-design-icons/CameraOutline.vue';
-import DiamondStone from 'vue-material-design-icons/DiamondStone.vue';
-import HumanMale from 'vue-material-design-icons/HumanMale.vue';
-import HumanFemale from 'vue-material-design-icons/HumanFemale.vue';
+// import CameraOutline from 'vue-material-design-icons/CameraOutline.vue';
+// import DiamondStone from 'vue-material-design-icons/DiamondStone.vue';
+// import HumanMale from 'vue-material-design-icons/HumanMale.vue';
+// import HumanFemale from 'vue-material-design-icons/HumanFemale.vue';
 
 import LogoTitle from '@/components/templates/LogoTitle.vue';
+
+import { useCategoryStore } from '@/stores/category';
+const categoryStore = useCategoryStore();
+
+onMounted(async () => {
+    await categoryStore.getCategories();
+});
+
 </script>
 <template>
     <div class="logo_and_menu">
@@ -15,17 +24,9 @@ import LogoTitle from '@/components/templates/LogoTitle.vue';
             <router-link to="/">
                 <HomeOutline size=30 /> Home
             </router-link>
-            <router-link to="/categorias/eletronics">
-                <CameraOutline size=30 /> Eletrônicos
-            </router-link>
-            <router-link to="/categorias/jewelery">
-                <DiamondStone size=30 /> Joias
-            </router-link>
-            <router-link to="/categorias/men's clothing">
-                <HumanMale size=30 /> Masculino
-            </router-link>
-            <router-link to="/categorias/women's clothing">
-                <HumanFemale size=30 /> Feminino
+            <router-link v-for="category in  categoryStore.categories " :key="category.id"
+                :to="`/produtos/categoria/${category.id}`">
+                <i class="icon mdi" :class="category.icon"></i> {{ category.name }}
             </router-link>
         </div>
     </div>
@@ -34,6 +35,12 @@ import LogoTitle from '@/components/templates/LogoTitle.vue';
 <style scoped>
 .mb-2 {
     margin-bottom: 1.5rem;
+}
+
+.icon {
+    font-size: 2rem;
+    align-self: center;
+
 }
 
 .divider {
@@ -46,8 +53,8 @@ import LogoTitle from '@/components/templates/LogoTitle.vue';
 }
 
 .menu a {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: #000000;
     gap: 1rem;

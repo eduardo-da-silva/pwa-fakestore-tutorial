@@ -6,19 +6,19 @@ import HeartOutline from 'vue-material-design-icons/HeartOutline.vue';
 import Star from 'vue-material-design-icons/Star.vue';
 import { formatDescription, formatPrice, formatTitle } from '@/helpers/format';
 
-const props = defineProps(['category']);
+const props = defineProps(['category_id']);
 const productStore = useProductStore();
 
 async function getProducts() {
-    if (props.category) {
-        await productStore.getProductsByCategory(props.category);
+    if (props.category_id) {
+        await productStore.getProductsByCategory(props.category_id);
     } else {
         await productStore.getProducts();
     }
 }
 
-watch(() => props.category, () => {
-    getProducts();
+watch(() => props.category_id, async () => {
+    await getProducts();
 });
 
 
@@ -31,16 +31,16 @@ onMounted(async () => {
 <template>
     <div class="product-list">
         <div v-if="productStore.products.length === 0">
-            <p>Produtos não encontrados</p>
+            <p>Produtos não encontrados!!!</p>
         </div>
         <div v-for="product in productStore.products" :key="product.id" class="product-card">
             <div class="product-img-wrapper">
-                <img :src="product.image" alt="product.name" />
+                <img :src="product.image?.url" alt="product.name" />
                 <heart-outline />
             </div>
             <div class="product-title-price">
                 <p>{{ formatTitle(product.title) }}</p>
-                <p>{{ formatPrice(product.price) }}</p>
+                <p>{{ formatPrice(product.price * 1) }}</p>
             </div>
             <div class="product-description-stars">
                 <p>{{ formatDescription(product.description) }}</p>
