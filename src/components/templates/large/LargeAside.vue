@@ -1,10 +1,5 @@
 <script setup>
 import { onMounted } from 'vue';
-import HomeOutline from 'vue-material-design-icons/HomeOutline.vue';
-// import CameraOutline from 'vue-material-design-icons/CameraOutline.vue';
-// import DiamondStone from 'vue-material-design-icons/DiamondStone.vue';
-// import HumanMale from 'vue-material-design-icons/HumanMale.vue';
-// import HumanFemale from 'vue-material-design-icons/HumanFemale.vue';
 
 import LogoTitle from '@/components/templates/LogoTitle.vue';
 
@@ -22,7 +17,7 @@ onMounted(async () => {
         <div class="divider" />
         <div class="menu">
             <router-link to="/">
-                <HomeOutline size=30 /> Home
+                <i class="icon mdi mdi-home-outline" /> Home
             </router-link>
             <router-link v-for="category in  categoryStore.categories " :key="category.id"
                 :to="`/produtos/categoria/${category.id}`">

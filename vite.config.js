@@ -5,7 +5,6 @@ import vue from '@vitejs/plugin-vue'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
@@ -18,6 +17,7 @@ export default defineConfig({
         short_name: 'FakeStore',
         description: 'Fake Store: Fantástica loja de produtos',
         theme_color: '#ffffff',
+        display: 'fullscreen',
         icons: [
           {
             src: 'pwa-192x192.png',
