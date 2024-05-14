@@ -15,9 +15,13 @@ export default defineConfig({
       manifest: {
         name: 'Fake Store',
         short_name: 'FakeStore',
+        start_url: '.',
+        display: 'fullscreen',
+        background_color: '#ffffff',
+        lang: 'pt',
+        scope: '/',
         description: 'Fake Store: Fantástica loja de produtos',
         theme_color: '#ffffff',
-        display: 'fullscreen',
         icons: [
           {
             src: 'pwa-192x192.png',
@@ -34,12 +38,46 @@ export default defineConfig({
         ],
         id: 'com.fake-store.app',
         orientation: 'any',
-        background_color: '#ffffff',
-        start_url: '.',
         launch_handler: {
           client_mode: ['navigate-existing', 'auto']
-        }
+        },
+        display_override: [
+          'fullscreen',
+          'minimal-ui',
+          'standalone',
+          'window-controls-overlay',
+          'browser'
+        ],
+        categories: ['education', 'shopping']
       },
+      // {
+      //   name: 'Fake Store',
+      //   short_name: 'FakeStore',
+      //   description: 'Fake Store: Fantástica loja de produtos',
+      //   theme_color: '#ffffff',
+      //   display: 'fullscreen',
+      //   icons: [
+      //     {
+      //       src: 'pwa-192x192.png',
+      //       sizes: '192x192',
+      //       type: 'image/png',
+      //       purpose: 'any'
+      //     },
+      //     {
+      //       src: 'pwa-512x512.png',
+      //       sizes: '512x512',
+      //       type: 'image/png',
+      //       purpose: 'maskable'
+      //     }
+      //   ],
+      //   id: 'com.fake-store.app',
+      //   orientation: 'any',
+      //   background_color: '#ffffff',
+      //   start_url: '.',
+      //   launch_handler: {
+      //     client_mode: ['navigate-existing', 'auto']
+      //   }
+      // },
       devOptions: {
         enabled: true
       }

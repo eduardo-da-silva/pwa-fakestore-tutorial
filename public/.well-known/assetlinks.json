@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.vercel.pwa_fakestore_tutorial.twa",
+        "sha256_cert_fingerprints": ["D2:0F:65:0F:89:DC:20:7F:6D:59:5E:55:9A:27:70:23:56:17:76:A7:B5:C9:02:82:D8:2E:FC:52:1E:6B:AC:8B"]
+      }
+    }]
