@@ -21,6 +21,10 @@ export default defineConfig({
         lang: 'pt',
         scope: '/',
         description: 'Fake Store: Fantástica loja de produtos',
+        injectManifest: {
+          globPatterns: ['**/*']
+        },
+        strategies: 'injectManifest',
         theme_color: '#ffffff',
         icons: [
           {

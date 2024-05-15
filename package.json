@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "@vueuse/core": "^10.9.0",
     "axios": "^1.6.8",
+    "firebase": "^10.12.0",
     "pinia": "^2.1.7",
     "vite-plugin-pwa": "^0.19.4",
     "vue": "^3.4.21",
