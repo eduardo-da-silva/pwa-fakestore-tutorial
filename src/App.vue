@@ -1,50 +1,13 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 
 import { getToken, onMessage } from "firebase/messaging";
-import { initializeApp } from 'firebase/app'
-import { getMessaging } from 'firebase/messaging'
-// import { onBackgroundMessage } from 'firebase/messaging/sw'
-import { useWebNotification } from '@vueuse/core'
-// import type { UseWebNotificationOptions } from '@vueuse/core'
+import { onBackgroundMessage } from 'firebase/messaging/sw'
+import { messaging } from '@/plugins/firebase'
 
-const options = reactive({
-  title: 'Hello, world from VueUse!',
-  body: 'This is a test notification',
-  dir: 'auto',
-  icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png',
-  lang: 'en',
-  renotify: true,
-  tag: 'test',
-  requireInteraction: true,
-})
-
-const {
-  isSupported,
-  // show,
-  onClick,
-} = useWebNotification(options)
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyAVfvqj1wUrjRpdlRoWc_fep474lG2-5Ms',
-  authDomain: 'fakestore-tutorial.firebaseapp.com',
-  projectId: 'fakestore-tutorial',
-  storageBucket: 'fakestore-tutorial.appspot.com',
-  messagingSenderId: '341042937156',
-  appId: '1:341042937156:web:722a1402ccf2b0d09b2b11',
-  measurementId: 'G-NHRFLWXHPC'
-}
-
-const app = initializeApp(firebaseConfig)
-
-const messaging = getMessaging(app)
 
 let token = ref();
 let err = ref('aqui')
-
-onClick(() => {
-  alert('Notification clicked!');
-});
 
 function randomNotification() {
   const notifTitle = "Meu titulo";
@@ -72,6 +35,19 @@ const notify = () => {
 
 // const app = initializeApp(firebaseConfig);
 
+onBackgroundMessage(messaging, (payload) => {
+  console.log('Received background message ', payload);
+  // Customize notification here
+  const notificationTitle = payload.notification.title + 'background';
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png',
+  };
+
+  navigator.serviceWorker.ready.then((registration) => {
+    registration.showNotification(notificationTitle, notificationOptions);
+  });
+});
 
 // const messaging = getMessaging(app)
 onMessage(messaging, (payload) => {

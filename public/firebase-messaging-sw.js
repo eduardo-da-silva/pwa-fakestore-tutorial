@@ -10,6 +10,8 @@ firebase.initializeApp({
   appId: '1:341042937156:web:722a1402ccf2b0d09b2b11',
   measurementId: 'G-NHRFLWXHPC'
 })
+
+const messaging = firebase.messaging()
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js'
 // import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js'
 // // TODO: Add SDKs for Firebase products that you want to use
