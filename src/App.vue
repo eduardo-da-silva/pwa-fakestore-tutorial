@@ -6,6 +6,7 @@ import { initializeApp } from 'firebase/app'
 import { getMessaging } from 'firebase/messaging'
 // import { onBackgroundMessage } from 'firebase/messaging/sw'
 import { useWebNotification } from '@vueuse/core'
+import { errorMessages } from "vue/compiler-sfc";
 // import type { UseWebNotificationOptions } from '@vueuse/core'
 
 const options = reactive({
@@ -41,6 +42,7 @@ const app = initializeApp(firebaseConfig)
 const messaging = getMessaging(app)
 
 let token = ref();
+let err = ref('e')
 
 onClick(() => {
   alert('Notification clicked!');
@@ -55,7 +57,6 @@ function randomNotification() {
     icon: notifImg,
   };
   new Notification(notifTitle, options);
-  setTimeout(randomNotification, 30000);
 }
 
 const notify = () => {
@@ -63,6 +64,9 @@ const notify = () => {
     if (result === "granted") {
       randomNotification();
     }
+    err.value = result
+  }).catch((err) => {
+    err.value = err
   });
 }
 
@@ -120,12 +124,7 @@ getToken(messaging, { vapidKey: 'BEakebcC5zrjPmNenyQooajjaw1-sQcQ6xCC3htaOE-44Q1
 <template>
   <p>TOKEN</p>
   <p>{{ token }}</p>
-  <div>
-    <p>
-      Supported: {{ isSupported ? 'Yes' : 'No' }}
-    </p>
-  </div>
-
+  <p>{{ err }}</p>
   <div v-if="isSupported">
     <button @click="notify">
       Notificar
