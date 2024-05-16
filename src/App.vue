@@ -42,7 +42,7 @@ const app = initializeApp(firebaseConfig)
 const messaging = getMessaging(app)
 
 let token = ref();
-let err = ref('e')
+let err = ref('err')
 
 onClick(() => {
   alert('Notification clicked!');
@@ -65,8 +65,8 @@ const notify = () => {
       randomNotification();
     }
     err.value = result
-  }).catch((err) => {
-    err.value = err
+  }).catch((error) => {
+    err.value = error
   });
 }
 
