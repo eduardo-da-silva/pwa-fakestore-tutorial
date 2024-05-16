@@ -10,15 +10,20 @@ import { useWebNotification } from '@vueuse/core'
 
 const options = reactive({
   title: 'Hello, world from VueUse!',
+  body: 'This is a test notification',
   dir: 'auto',
+  icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png',
   lang: 'en',
   renotify: true,
   tag: 'test',
+  requireInteraction: true,
+
 })
 
 const {
   isSupported,
   show,
+  onClick,
 } = useWebNotification(options)
 
 const firebaseConfig = {
@@ -36,6 +41,10 @@ const app = initializeApp(firebaseConfig)
 const messaging = getMessaging(app)
 
 let token = ref();
+
+onClick(() => {
+  alert('Notification clicked!');
+});
 
 
 // const app = initializeApp(firebaseConfig);
