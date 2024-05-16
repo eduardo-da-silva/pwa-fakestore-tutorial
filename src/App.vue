@@ -1,37 +1,25 @@
 <script setup>
-import { ref } from "vue";
-
+import { ref, onMounted } from "vue";
 import { getToken, onMessage } from "firebase/messaging";
-// import { onBackgroundMessage } from 'firebase/messaging/sw'
 import { messaging } from '@/plugins/firebase'
 
+const vapidKey = import.meta.env.VITE_VAPID_KEY
 
 let token = ref();
 let err = ref('aqui')
 
-function randomNotification() {
-  const notifTitle = "Meu titulo";
-  const notifBody = `Algum texto aleatório`;
-  const notifImg = 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png';
-  const options = {
-    body: notifBody,
-    icon: notifImg,
-  };
-  navigator.serviceWorker.ready.then(function (registration) {
-    registration.showNotification(notifTitle, options);
-  });
-}
-
-const notify = () => {
-  Notification.requestPermission().then((result) => {
-    if (result === "granted") {
-      randomNotification();
-    }
-    err.value = result
-  }).catch((error) => {
-    err.value = error
-  });
-}
+// function randomNotification() {
+//   const notifTitle = "Meu titulo";
+//   const notifBody = `Algum texto aleatório`;
+//   const notifImg = 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png';
+//   const options = {
+//     body: notifBody,
+//     icon: notifImg,
+//   };
+//   navigator.serviceWorker.ready.then(function (registration) {
+//     registration.showNotification(notifTitle, options);
+//   });
+// }
 
 // const app = initializeApp(firebaseConfig);
 
@@ -73,17 +61,39 @@ onMessage(messaging, (payload) => {
   //   notificationOptions);
 });
 
-
-getToken(messaging, { vapidKey: 'BEakebcC5zrjPmNenyQooajjaw1-sQcQ6xCC3htaOE-44Q1w7VIbcRlfoH9MXw7TGj29ZbTR7taMO2iNog1674Y' }).then((currentToken) => {
-  if (currentToken) {
-    // Send the token to your server and update the UI if necessary
-    token.value = currentToken;
-  } else {
-    console.log('No registration token available. Request permission to generate one.');
+const fetchToken = async () => {
+  try {
+    const currentToken = await getToken(messaging, { vapidKey })
+    if (currentToken) {
+      token.value = currentToken;
+      // Send the token to your server and update the UI if necessary
+    } else {
+      console.log('No registration token available. Request permission to generate one.');
+    }
   }
-}).catch((err) => {
-  console.log('An error occurred while retrieving token. ', err);
-});
+  catch (err) {
+    console.log('An error occurred while retrieving token. ', err);
+    err.value = err
+  }
+}
+
+onMounted(() => {
+  fetchToken()
+})
+
+
+
+
+// getToken(messaging, { vapidKey }).then((currentToken) => {
+//   if (currentToken) {
+//     // Send the token to your server and update the UI if necessary
+//     token.value = currentToken;
+//   } else {
+//     console.log('No registration token available. Request permission to generate one.');
+//   }
+// }).catch((err) => {
+//   console.log('An error occurred while retrieving token. ', err);
+// });
 
 
 </script>
@@ -92,13 +102,5 @@ getToken(messaging, { vapidKey: 'BEakebcC5zrjPmNenyQooajjaw1-sQcQ6xCC3htaOE-44Q1
   <p>TOKEN</p>
   <p>{{ token }}</p>
   <p>{{ err }}</p>
-  <div v-if="isSupported">
-    <button @click="notify">
-      Notify
-    </button>
-  </div>
-  <div v-else>
-    The Notification Web API is not supported in your browser.
-  </div>
   <router-view />
 </template>

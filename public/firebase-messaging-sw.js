@@ -15,13 +15,13 @@ const messaging = firebase.messaging()
 
 messaging.onBackgroundMessage(function (payload) {
   // Customize notification here
-  const notificationTitle = payload.notification.title + ' Back'
-  const notificationOptions = {
-    body: payload.notification.body,
-    icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png'
-  }
+  // const notificationTitle = 'Back Message Title'
+  // const notificationOptions = {
+  //   body: payload.notification.body,
+  //   icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png'
+  // }
 
-  self.registration.showNotification(notificationTitle, notificationOptions)
+  self.registration.showNotification()
 })
 
 // const messaging = firebase.messaging()
