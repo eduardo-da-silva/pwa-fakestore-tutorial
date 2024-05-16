@@ -111,7 +111,7 @@ getToken(messaging, { vapidKey: 'BEakebcC5zrjPmNenyQooajjaw1-sQcQ6xCC3htaOE-44Q1
   <p>{{ err }}</p>
   <div v-if="isSupported">
     <button @click="notify">
-      Testar
+      Note test
     </button>
   </div>
   <div v-else>
