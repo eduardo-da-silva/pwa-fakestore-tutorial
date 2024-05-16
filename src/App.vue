@@ -6,7 +6,6 @@ import { initializeApp } from 'firebase/app'
 import { getMessaging } from 'firebase/messaging'
 // import { onBackgroundMessage } from 'firebase/messaging/sw'
 import { useWebNotification } from '@vueuse/core'
-import { errorMessages } from "vue/compiler-sfc";
 // import type { UseWebNotificationOptions } from '@vueuse/core'
 
 const options = reactive({
@@ -95,15 +94,6 @@ onMessage(messaging, (payload) => {
 
 
 getToken(messaging, { vapidKey: 'BEakebcC5zrjPmNenyQooajjaw1-sQcQ6xCC3htaOE-44Q1w7VIbcRlfoH9MXw7TGj29ZbTR7taMO2iNog1674Y' }).then((currentToken) => {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/firebase-messaging-sw.js')
-      .then(function (registration) {
-        console.log('Registration successful, scope is:', registration.scope);
-      }).catch(function (err) {
-        console.log('Service worker registration failed, error:', err);
-      });
-  }
-
   if (currentToken) {
     // Send the token to your server and update the UI if necessary
     token.value = currentToken;
