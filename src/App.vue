@@ -6,7 +6,6 @@ import { messaging } from '@/plugins/firebase'
 const vapidKey = import.meta.env.VITE_VAPID_KEY
 
 let token = ref();
-let err = ref('aqui')
 
 // function randomNotification() {
 //   const notifTitle = "Meu titulo";
@@ -101,6 +100,5 @@ onMounted(() => {
 <template>
   <p>TOKEN</p>
   <p>{{ token }}</p>
-  <p>{{ err }}</p>
   <router-view />
 </template>
