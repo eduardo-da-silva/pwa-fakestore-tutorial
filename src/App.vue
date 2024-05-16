@@ -46,6 +46,25 @@ onClick(() => {
   alert('Notification clicked!');
 });
 
+function randomNotification() {
+  const notifTitle = "Meu titulo";
+  const notifBody = `Algum texto aleatório`;
+  const notifImg = 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png';
+  const options = {
+    body: notifBody,
+    icon: notifImg,
+  };
+  new Notification(notifTitle, options);
+  setTimeout(randomNotification, 30000);
+}
+
+const notify = () => {
+  Notification.requestPermission().then((result) => {
+    if (result === "granted") {
+      randomNotification();
+    }
+  });
+}
 
 // const app = initializeApp(firebaseConfig);
 
@@ -108,8 +127,8 @@ getToken(messaging, { vapidKey: 'BEakebcC5zrjPmNenyQooajjaw1-sQcQ6xCC3htaOE-44Q1
   </div>
 
   <div v-if="isSupported">
-    <button @click="show(options)">
-      Show Notification
+    <button @click="notify">
+      Notificar
     </button>
   </div>
   <div v-else>
