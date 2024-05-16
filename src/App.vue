@@ -42,7 +42,7 @@ const app = initializeApp(firebaseConfig)
 const messaging = getMessaging(app)
 
 let token = ref();
-let err = ref('err')
+let err = ref('aqui')
 
 onClick(() => {
   alert('Notification clicked!');
@@ -56,7 +56,10 @@ function randomNotification() {
     body: notifBody,
     icon: notifImg,
   };
-  new Notification(notifTitle, options);
+  navigator.serviceWorker.ready.then(function (registration) {
+    registration.showNotification(notifTitle, options);
+  });
+  // new Notification(notifTitle, options);
 }
 
 const notify = () => {
