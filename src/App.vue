@@ -100,6 +100,6 @@ onMounted(() => {
 <template>
   <p>TOKEN</p>
   <p>{{ token }}</p>
-  <p>1816</p>
+  <p>1819</p>
   <router-view />
 </template>
