@@ -17,7 +17,6 @@ const options = reactive({
   renotify: true,
   tag: 'test',
   requireInteraction: true,
-
 })
 
 const {
@@ -58,7 +57,6 @@ function randomNotification() {
   navigator.serviceWorker.ready.then(function (registration) {
     registration.showNotification(notifTitle, options);
   });
-  // new Notification(notifTitle, options);
 }
 
 const notify = () => {
@@ -97,18 +95,11 @@ getToken(messaging, { vapidKey: 'BEakebcC5zrjPmNenyQooajjaw1-sQcQ6xCC3htaOE-44Q1
   if (currentToken) {
     // Send the token to your server and update the UI if necessary
     token.value = currentToken;
-
-    console.log("Token is:", currentToken);
-    // ...
   } else {
-    // Show permission request UI
     console.log('No registration token available. Request permission to generate one.');
-    // ...
   }
-
 }).catch((err) => {
   console.log('An error occurred while retrieving token. ', err);
-  // ...
 });
 
 
@@ -120,7 +111,7 @@ getToken(messaging, { vapidKey: 'BEakebcC5zrjPmNenyQooajjaw1-sQcQ6xCC3htaOE-44Q1
   <p>{{ err }}</p>
   <div v-if="isSupported">
     <button @click="notify">
-      Notificar
+      Testar
     </button>
   </div>
   <div v-else>

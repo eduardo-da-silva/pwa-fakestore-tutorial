@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import './plugins/axios'
-import './plugins/notification'
+// import './plugins/notification'
 
 import App from './App.vue'
 import router from './router'
