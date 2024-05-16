@@ -13,7 +13,7 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging()
 
-messaging.onBackgroundMessage(function (payload) {
+messaging.onBackgroundMessage((payload) => {
   // Customize notification here
   const notificationTitle = 'Back Message Title'
   const notificationOptions = {
