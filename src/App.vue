@@ -21,7 +21,7 @@ const options = reactive({
 
 const {
   isSupported,
-  show,
+  // show,
   onClick,
 } = useWebNotification(options)
 
@@ -75,10 +75,17 @@ const notify = () => {
 
 // const messaging = getMessaging(app)
 onMessage(messaging, (payload) => {
-  console.log('Message received. ', payload);
-  options.title = payload.notification.title
-  show(options)
-  alert(payload.notification.body)
+  navigator.serviceWorker.ready.then(function (registration) {
+    const options = {
+      body: payload.notification.body,
+      icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png',
+    };
+    registration.showNotification(payload.notification.title, options);
+  });
+  // console.log('Message received. ', payload)
+  // options.title = payload.notification.title
+  // show(options)
+  // alert(payload.notification.body)
   // enviar para o browser
   // const notificationTitle = payload.notification.title;
   // const notificationOptions = {
@@ -111,7 +118,7 @@ getToken(messaging, { vapidKey: 'BEakebcC5zrjPmNenyQooajjaw1-sQcQ6xCC3htaOE-44Q1
   <p>{{ err }}</p>
   <div v-if="isSupported">
     <button @click="notify">
-      Note test
+      Notify
     </button>
   </div>
   <div v-else>
