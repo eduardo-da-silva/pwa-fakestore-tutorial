@@ -2,7 +2,7 @@
 import { ref } from "vue";
 
 import { getToken, onMessage } from "firebase/messaging";
-import { onBackgroundMessage } from 'firebase/messaging/sw'
+// import { onBackgroundMessage } from 'firebase/messaging/sw'
 import { messaging } from '@/plugins/firebase'
 
 
@@ -35,19 +35,19 @@ const notify = () => {
 
 // const app = initializeApp(firebaseConfig);
 
-onBackgroundMessage(messaging, (payload) => {
-  console.log('Received background message ', payload);
-  // Customize notification here
-  const notificationTitle = payload.notification.title + 'background';
-  const notificationOptions = {
-    body: payload.notification.body,
-    icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png',
-  };
+// onBackgroundMessage(messaging, (payload) => {
+//   console.log('Received background message ', payload);
+//   // Customize notification here
+//   const notificationTitle = payload.notification.title + 'background';
+//   const notificationOptions = {
+//     body: payload.notification.body,
+//     icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png',
+//   };
 
-  navigator.serviceWorker.ready.then((registration) => {
-    registration.showNotification(notificationTitle, notificationOptions);
-  });
-});
+//   navigator.serviceWorker.ready.then((registration) => {
+//     registration.showNotification(notificationTitle, notificationOptions);
+//   });
+// });
 
 // const messaging = getMessaging(app)
 onMessage(messaging, (payload) => {

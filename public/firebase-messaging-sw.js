@@ -12,6 +12,19 @@ firebase.initializeApp({
 })
 
 const messaging = firebase.messaging()
+
+messaging.onBackgroundMessage(function (payload) {
+  // Customize notification here
+  const notificationTitle = payload.notification.title + ' Back'
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png'
+  }
+
+  self.registration.showNotification(notificationTitle, notificationOptions)
+})
+
+// const messaging = firebase.messaging()
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js'
 // import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js'
 // // TODO: Add SDKs for Firebase products that you want to use
