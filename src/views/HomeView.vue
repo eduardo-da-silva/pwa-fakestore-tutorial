@@ -7,6 +7,6 @@ const messagingStore = useMessagingStore()
 <template>
   <p>TOKEN</p>
   <p>{{ messagingStore.token }}</p>
-  <p>1645</p>
+  <p>1705</p>
   <product-list />
 </template>
