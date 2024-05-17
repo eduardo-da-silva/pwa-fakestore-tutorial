@@ -17,6 +17,8 @@ export default defineConfig({
         short_name: 'FakeStore',
         start_url: '.',
         display: 'standalone',
+        display_override: ['standalone', 'window-controls-overlay', 'browser'],
+        dir: 'auto',
         background_color: '#ffffff',
         lang: 'pt',
         scope: '/',
@@ -45,13 +47,6 @@ export default defineConfig({
         launch_handler: {
           client_mode: ['navigate-existing', 'auto']
         },
-        display_override: [
-          'fullscreen',
-          'minimal-ui',
-          'standalone',
-          'window-controls-overlay',
-          'browser'
-        ],
         categories: ['education', 'shopping']
       },
       // {
