@@ -16,7 +16,7 @@ export default defineConfig({
         name: 'Fake Store',
         short_name: 'FakeStore',
         start_url: '.',
-        display: 'fullscreen',
+        display: 'standalone',
         background_color: '#ffffff',
         lang: 'pt',
         scope: '/',
