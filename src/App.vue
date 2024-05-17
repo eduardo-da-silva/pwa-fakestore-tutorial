@@ -37,28 +37,28 @@ let token = ref();
 // });
 
 // const messaging = getMessaging(app)
-onMessage(messaging, (payload) => {
-  navigator.serviceWorker.ready.then(function (registration) {
-    const options = {
-      body: payload.notification.body,
-      icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png',
-    };
-    registration.showNotification(payload.notification.title, options);
-  });
-  // console.log('Message received. ', payload)
-  // options.title = payload.notification.title
-  // show(options)
-  // alert(payload.notification.body)
-  // enviar para o browser
-  // const notificationTitle = payload.notification.title;
-  // const notificationOptions = {
-  //   body: payload.notification.body,
-  //   icon: '/logo.png'
-  // };
+// onMessage(messaging, (payload) => {
+//   navigator.serviceWorker.ready.then(function (registration) {
+//     const options = {
+//       body: payload.notification.body,
+//       icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png',
+//     };
+//     registration.showNotification(payload.notification.title, options);
+//   });
+//   // console.log('Message received. ', payload)
+//   // options.title = payload.notification.title
+//   // show(options)
+//   // alert(payload.notification.body)
+//   // enviar para o browser
+//   // const notificationTitle = payload.notification.title;
+//   // const notificationOptions = {
+//   //   body: payload.notification.body,
+//   //   icon: '/logo.png'
+//   // };
 
-  // self.registration.showNotification(notificationTitle,
-  //   notificationOptions);
-});
+//   // self.registration.showNotification(notificationTitle,
+//   //   notificationOptions);
+// });
 
 const fetchToken = async () => {
   try {
@@ -100,6 +100,6 @@ onMounted(() => {
 <template>
   <p>TOKEN</p>
   <p>{{ token }}</p>
-  <p>1819</p>
+  <p>0813</p>
   <router-view />
 </template>
