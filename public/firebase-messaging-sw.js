@@ -17,7 +17,7 @@ messaging.onBackgroundMessage((payload) => {
   // Customize notification here
   const notificationTitle = 'Back Message Title'
   const notificationOptions = {
-    body: payload.notification.body,
+    body: payload.data.body,
     icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png'
   }
 
