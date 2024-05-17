@@ -14,16 +14,22 @@ firebase.initializeApp({
 const messaging = firebase.messaging()
 
 messaging.onBackgroundMessage((payload) => {
-  console.log(payload)
-  // Customize notification here
   const notificationTitle = 'Back Message Title'
   const notificationOptions = {
     body: payload.data.body,
     icon: 'https://pwa-fakestore-tutorial.vercel.app/assets/logo-fxZnRAhd.png'
   }
-
   self.registration.showNotification(notificationTitle, notificationOptions)
 })
+
+self.addEventListener(
+  'notificationclick',
+  (event) => {
+    event.notification.close()
+    clients.openWindow('')
+  },
+  false
+)
 
 // const messaging = firebase.messaging()
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js'
