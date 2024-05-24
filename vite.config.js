@@ -6,6 +6,7 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  isCustomElement: (tag) => tag.startsWith('passage-'),
   plugins: [
     vue(),
     VueDevTools(),
