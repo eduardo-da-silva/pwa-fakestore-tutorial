@@ -17,7 +17,7 @@ export default defineConfig({
         name: 'Fake Store',
         short_name: 'FakeStore',
         start_url: '.',
-        display: 'standalone',
+        display: 'fullscreen',
         display_override: ['standalone', 'window-controls-overlay', 'browser'],
         dir: 'auto',
         background_color: '#ffffff',
