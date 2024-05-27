@@ -49,7 +49,7 @@ const login = async () => {
 
 </script>
 <template>
-  <h1>Login with form</h1>
+  <h1>Login with form2</h1>
   <div class="authContainer">
     <form @submit.prevent="() => { }">
       <label for="email">Email</label>
