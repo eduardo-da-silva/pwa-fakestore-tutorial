@@ -10,20 +10,20 @@ const user = reactive({
 
 const token = ref('')
 
-onMounted(async () => {
-  checkLocalLoginData()
-})
+// onMounted(async () => {
+//   checkLocalLoginData()
+// })
 
-const checkLocalLoginData = async () => {
-  console.log('oi')
-  const cred = await navigator.credentials.get()
-  console.log(cred)
-  if (cred) {
-    user.email = cred.id
-    user.password = cred.password
-    login()
-  }
-}
+// const checkLocalLoginData = async () => {
+//   console.log('oi')
+//   const cred = await navigator.credentials.get()
+//   console.log(cred)
+//   if (cred) {
+//     user.email = cred.id
+//     user.password = cred.password
+//     login()
+//   }
+// }
 
 const login = async () => {
   console.log('login')
