@@ -24,6 +24,6 @@ onMounted(async () => {
   <p>TOKEN2</p>
   <p>{{ messagingStore.token }}</p>
   <p>1705</p>
-  <input type="text">
+  <input autofocus type="text">
   <product-list />
 </template>
