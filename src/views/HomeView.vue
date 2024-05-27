@@ -23,7 +23,7 @@
 <template>
   <!-- <p>TOKEN</p>
   <p>{{ messagingStore.token }}</p> -->
-  <p>1534</p>
-  <!-- <input autofocus type="text"> -->
+  <p>1536</p>
+  <input autofocus type="text">
   <product-list />
 </template>
