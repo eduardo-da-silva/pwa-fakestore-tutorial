@@ -21,8 +21,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <p>TOKEN</p>
+  <p>TOKEN2</p>
   <p>{{ messagingStore.token }}</p>
   <p>1705</p>
+  <input type="text">
   <product-list />
 </template>
