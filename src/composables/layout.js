@@ -1,13 +1,14 @@
-import { defineAsyncComponent, onMounted, onUnmounted, shallowRef } from 'vue'
+import { defineAsyncComponent, onMounted, onUnmounted, ref, shallowRef } from 'vue'
 
 export function useLayout() {
   const layout = shallowRef()
+  const currentWidth = ref(window.innerWidth)
 
   const updateLayout = () => {
     const width = window.innerWidth
-    if (width < 768) {
+    if (width < 768 && width != currentWidth.value) {
       layout.value = defineAsyncComponent(() => import('@/layouts/LayoutSmall.vue'))
-    } else if (width < 1200) {
+    } else if (width < 1200 && width != currentWidth.value) {
       layout.value = defineAsyncComponent(() => import('@/layouts/LayoutMedium.vue'))
     } else {
       layout.value = defineAsyncComponent(() => import('@/layouts/LayoutLarge.vue'))

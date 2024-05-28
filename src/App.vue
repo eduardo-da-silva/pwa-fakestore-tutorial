@@ -23,7 +23,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <p>1536</p>
-  <input autofocus type="text">
-  <!-- <router-view /> -->
+  <router-view />
 </template>
