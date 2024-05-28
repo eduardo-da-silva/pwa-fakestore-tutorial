@@ -33,7 +33,7 @@ const refresh = async () => {
 <template>
   <p>TOKEN</p>
   <p>{{ messagingStore.token }}</p>
-  <p>1359 - {{ perm }}</p>
+  <p>1406 - {{ perm }}</p>
   <button @click="refresh">Refresh</button>
   <input autofocus type="text">
   <product-list />

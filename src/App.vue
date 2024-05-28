@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { onMessage } from "firebase/messaging";
 import { messaging } from '@/plugins/firebase'
 
@@ -16,8 +16,19 @@ onMessage(messaging, (payload) => {
   });
 });
 
+const perm = ref('')
+
+const getToken = async () => {
+  const permission = await Notification.requestPermission();
+  perm.value = permission
+  if (permission === 'granted') {
+    messagingStore.getToken()
+  }
+}
+
 onMounted(() => {
-  messagingStore.getToken()
+  getToken();
+  // messagingStore.getToken()
 })
 
 </script>
