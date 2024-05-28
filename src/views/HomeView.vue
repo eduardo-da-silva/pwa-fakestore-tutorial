@@ -23,7 +23,7 @@ const messagingStore = useMessagingStore()
 <template>
   <p>TOKEN</p>
   <p>{{ messagingStore.token }}</p>
-  <p>1141</p>
+  <p>1332</p>
   <input autofocus type="text">
   <product-list />
 </template>
