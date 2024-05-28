@@ -2,7 +2,7 @@ import { defineAsyncComponent, onMounted, onUnmounted, ref, shallowRef } from 'v
 
 export function useLayout() {
   const layout = shallowRef()
-  const currentWidth = ref(window.innerWidth)
+  const currentWidth = ref(0)
 
   const updateLayout = () => {
     const width = window.innerWidth
