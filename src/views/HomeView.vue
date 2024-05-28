@@ -5,8 +5,18 @@
 // const passageUser = new PassageUser()
 
 // import ProductList from '@/components/ProductList.vue';
+import { ref } from 'vue';
 import { useMessagingStore } from '@/stores/messaging'
 const messagingStore = useMessagingStore()
+
+const perm = ref('')
+const refresh = async () => {
+  const permission = await Navigator.requestPermission()
+  perm.value = permission
+  if (permission === 'granted') {
+    messagingStore.getToken()
+  }
+}
 
 // onMounted(async () => {
 //   const user = await passageUser.userInfo()
@@ -23,7 +33,8 @@ const messagingStore = useMessagingStore()
 <template>
   <p>TOKEN</p>
   <p>{{ messagingStore.token }}</p>
-  <p>1342</p>
+  <p>1354 - {{ perm }}</p>
+  <button @click="refresh">Refresh</button>
   <input autofocus type="text">
   <product-list />
 </template>

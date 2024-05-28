@@ -8,12 +8,7 @@ export const useMessagingStore = defineStore('messaging', () => {
   const token = ref('')
 
   async function getToken() {
-    const permission = await Notification.requestPermission()
-    if (permission == 'granted') {
-      token.value = await messagingService.getToken()
-    } else {
-      token.value = permission
-    }
+    token.value = await messagingService.getToken()
   }
 
   return { token, getToken }
