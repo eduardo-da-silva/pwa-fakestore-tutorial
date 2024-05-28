@@ -11,7 +11,7 @@ const messagingStore = useMessagingStore()
 
 const perm = ref('')
 const refresh = async () => {
-  const permission = await Navigator.requestPermission()
+  const permission = await Notification.requestPermission();
   perm.value = permission
   if (permission === 'granted') {
     messagingStore.getToken()
@@ -33,7 +33,7 @@ const refresh = async () => {
 <template>
   <p>TOKEN</p>
   <p>{{ messagingStore.token }}</p>
-  <p>1354 - {{ perm }}</p>
+  <p>1359 - {{ perm }}</p>
   <button @click="refresh">Refresh</button>
   <input autofocus type="text">
   <product-list />
