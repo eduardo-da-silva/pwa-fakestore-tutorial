@@ -12,7 +12,7 @@ export const useMessagingStore = defineStore('messaging', () => {
     if (permission == 'granted') {
       token.value = await messagingService.getToken()
     } else {
-      token.value = 'Erro de acesso'
+      token.value = permission
     }
   }
 
