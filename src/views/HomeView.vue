@@ -5,8 +5,8 @@
 // const passageUser = new PassageUser()
 
 // import ProductList from '@/components/ProductList.vue';
-// import { useMessagingStore } from '@/stores/messaging'
-// const messagingStore = useMessagingStore()
+import { useMessagingStore } from '@/stores/messaging'
+const messagingStore = useMessagingStore()
 
 // onMounted(async () => {
 //   const user = await passageUser.userInfo()
@@ -21,9 +21,9 @@
 </script>
 
 <template>
-  <!-- <p>TOKEN</p>
-  <p>{{ messagingStore.token }}</p> -->
-  <p>1021</p>
+  <p>TOKEN</p>
+  <p>{{ messagingStore.token }}</p>
+  <p>1141</p>
   <input autofocus type="text">
   <product-list />
 </template>
