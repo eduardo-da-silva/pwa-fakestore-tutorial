@@ -17,7 +17,7 @@ export function useLayout() {
 
   onMounted(() => {
     updateLayout()
-    window.addEventListener('resize', updateLayout)
+    // window.addEventListener('resize', updateLayout)
   })
 
   onUnmounted(() => {
